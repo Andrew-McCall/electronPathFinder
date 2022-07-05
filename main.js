@@ -3,8 +3,8 @@ const { app, BrowserWindow } = require('electron');
 app.whenReady().then( () => {
 
     const mainWindow = new BrowserWindow({
-        width:480,
-        height:512,
+        width:612,
+        height:612,
         resizable:false,
         autoHideMenuBar: true,
         webPreferences:{
@@ -15,6 +15,6 @@ app.whenReady().then( () => {
         title:"Loading"
     });
 
-    mainWindow.loadFile('home.html')
+    mainWindow.loadFile('main.html')
 
 })
