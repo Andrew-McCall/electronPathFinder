@@ -5,15 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pathfinder</title>
-    <style>canvas{background-color: plum;}</style>
+    <style>
+        canvas{background-color: plum;}
+        body{margin: auto;}
+    </style>
 
     <script defer src="src/main.js"></script>
 
 </head>
-<body>
-    <canvas id="canvas" height="500px" width="500px"></canvas>
+<body unselectable="on">
+    <div>
+        <button id="play">Play</button>
+    </div>
 
-    <p>By Andrew McCall</p>
+    <div>
+        <canvas id="canvas" height="500px" width="500px"></canvas>
+    </div>
+
+    <div id="editor">
+        <button id="erase">Remove</button>
+        <button id="wall">Wall</button>
+        <button id="start">Start</button>
+        <button id="finish">Finish</button>
+        <button id="clear">CLEAR ALL</button>
+    </div>
+    
+
+    <div><p>By Andrew McCall</p></div>
 
 </body>
 </html>

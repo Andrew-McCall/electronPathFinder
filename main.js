@@ -3,8 +3,8 @@ const { app, BrowserWindow } = require('electron');
 app.whenReady().then( () => {
 
     const mainWindow = new BrowserWindow({
-        width:612,
-        height:612,
+        width:632,
+        height:632,
         resizable:false,
         autoHideMenuBar: true,
         webPreferences:{
