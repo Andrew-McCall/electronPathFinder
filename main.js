@@ -13,6 +13,7 @@ app.whenReady().then( () => {
             nodeIntegrationInWorker: true
         },
         title:"Loading"
+        icon: __dirname + '/astar.ico',
     });
 
     mainWindow.loadFile('main.html')
