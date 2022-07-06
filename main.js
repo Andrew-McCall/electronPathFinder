@@ -12,7 +12,7 @@ app.whenReady().then( () => {
             contextIsolation: false,
             nodeIntegrationInWorker: true
         },
-        title:"Loading"
+        title:"Loading",
         icon: __dirname + '/astar.ico',
     });
 
