@@ -21,21 +21,19 @@ function writeData(x, y, value) {
 }
 
 function calculate() {
-    function surrounding(coords) {
-        const current = distance[coords.x + coords.y * SIZE]
+    function surrounding(current) {
         current.complete = true;
         for (let dx = -1; dx < 2; dx++){
             for (let dy = -1; dy < 2; dy++) {
-                if (dx === 0 && dy === 0) continue;
-                const cx = coords.x+dx;
-                const cy = coords.y+dy;
+                const cx = current.x+dx;
+                const cy = current.y+dy;
                 if (readData(cx, cy) !== 1 && cx >= 0 &&  cx < SIZE && cy >= 0 && cy < SIZE){
                     
                     if (null === distance[cx + cy * SIZE]){
-                        distance[cx + cy * SIZE] = {to:Math.abs(goal.x-cx) + Math.abs(goal.y-cy),from:current.from+1,path:coords, x:cx, y:cy, complete:false}
+                        distance[cx + cy * SIZE] = {to:Math.abs(goal.x-cx) + Math.abs(goal.y-cy),from:current.from+1,path:{x:current.x, y:current.y}, x:cx, y:cy, complete:false}
                     }else if (distance[cx + cy * SIZE].from > current.from+1){
                         distance[cx + cy * SIZE].from = current.from+1;
-                        distance[cx + cy * SIZE].path = coords;
+                        distance[cx + cy * SIZE].path = {x:current.x, y:current.y};
                     }
                 }
             }
