@@ -40,7 +40,6 @@ function calculate() {
                 }
             }
         } 
-        lowest = start;
     }
     let distance = new Array(SIZE * SIZE).fill(null);
 
@@ -67,12 +66,13 @@ function calculate() {
     if (!start || !goal) {
         console.log("TODO: Error for no start/goal")
     } else {
-        distance[start.x + start.y * SIZE] = {to:Math.abs(start.x-goal.x) + Math.abs(start.y-goal.x),from:0,path:{x:start.x, y:start.y}, x:start.x, y:start.y}
+        distance[start.x + start.y * SIZE] = {to:999,from:0,path:{x:start.x, y:start.y}, x:start.x, y:start.y}
         start = distance[start.x + start.y * SIZE]
 
         let lowest = start;
         while (lowest.to !== 0){
             surrounding(lowest, distance)
+            lowest = start
             let lowestDistance = lowest.to + lowest.to + lowest.from
             for (let x = 0; x < SIZE; x++) {
                 for (let y = 0; y < SIZE; y++) {
@@ -80,11 +80,14 @@ function calculate() {
                     if (current && !current.complete){
                         const currentDistance = current.to + current.to + current.from
                         if (lowestDistance > currentDistance){
-                            lowestDistance = currentDistance;
+                            lowestDistance = lowest.to + lowest.to + lowest.from;
                             lowest = current;
                         }
                     }
                 }
+            }
+            if (lowest === start){
+                break;
             }
         }
 
