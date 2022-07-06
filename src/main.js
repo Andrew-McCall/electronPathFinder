@@ -91,6 +91,7 @@ function calculate() {
         while (lowest.from !== 0){
             ctx.fillStyle = 'pink';
             ctx.fillRect(lowest.x * SCALE, lowest.y * SCALE, SCALE, SCALE);
+            let currentLowest = lowest
             for (let dx = -1; dx < 2; dx++){
                 for (let dy = -1; dy < 2; dy++) {
                     if (dx === 0 && dy === 0) continue;
@@ -98,13 +99,14 @@ function calculate() {
                     const cy = lowest.y+dy;
                     if (cx >= 0 &&  cx < SIZE && cy >= 0 && cy < SIZE){
                         const current = distance[cx + cy * SIZE]
-                        if (current && current.from < lowest.from){
-                            lowest = current;
+                        if (current && current.from < currentLowest.from){
+                            currentLowest = current;
                         }
                     }
                     
                 }
             }
+            lowest = currentLowest
         }
 
 
