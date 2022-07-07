@@ -22,7 +22,7 @@ function writeData(x, y, value) {
 }
 
 let distance = new Array(SIZE * SIZE).fill(null);
-function calculate() {
+async function  calculate() {
     
     function surrounding(current) {
         current.complete = true;
@@ -32,9 +32,8 @@ function calculate() {
                 const cx = current.x+dx;
                 const cy = current.y+dy;
                 if (readData(cx, cy) !== 1 && cx >= 0 &&  cx < SIZE && cy >= 0 && cy < SIZE){
-                    
                     if (null === distance[cx + cy * SIZE]){
-                        distance[cx + cy * SIZE] = {to:Math.abs(goal.x-cx) + Math.abs(goal.y-cy),from:current.from+1,path:{x:current.x, y:current.y}, x:cx, y:cy, complete:false}
+                        distance[cx + cy * SIZE] = {to:(Math.abs(cx-goal.x) + Math.abs(cy-goal.y)),from:current.from+1,path:{x:current.x, y:current.y}, x:cx, y:cy, complete:false}
                     }else if (distance[cx + cy * SIZE].from > current.from+1){
                         distance[cx + cy * SIZE].from = current.from+1;
                         distance[cx + cy * SIZE].path = {x:current.x, y:current.y};
@@ -75,29 +74,32 @@ function calculate() {
     } else {
         distance[start.x + start.y * SIZE] = {to:99999,from:0,path:{x:start.x, y:start.y}, x:start.x, y:start.y}
         start = distance[start.x + start.y * SIZE]
-
+        ctx.fillStyle="grey"
         let lowest = [start];
         while (lowest[0].to !== 0){
             for (let i = 0; i < lowest.length; i++) {
-                surrounding(lowest[i], distance)
+                surrounding(lowest[i])
+                ctx.fillRect(lowest[i].x * SCALE, lowest[i].y * SCALE, SCALE, SCALE);
             }
+            await new Promise(resolve => setTimeout(resolve, 250));
             lowest = [start];
 
-            let lowestDistance = lowest[0].to + lowest[0].from
+            let lowestDistance = 999999
             for (let x = 0; x < SIZE; x++) {
                 for (let y = 0; y < SIZE; y++) {
                     const current = distance[x + y * SIZE]
                     if (current && !current.complete){
-                        const currentDistance = current.to + current.from
+                        const currentDistance = current.to
                         if (lowestDistance > currentDistance){
                             lowestDistance = currentDistance
                             lowest = [current];
-                        }else if (lowestDistance = currentDistance){
+                        }else if (lowestDistance === currentDistance){
                             lowest.push(current)
                         }
                     }
                 }
             }
+            
             if (lowest[0] === start){
                 break;
             }
@@ -129,11 +131,7 @@ function calculate() {
             output.innerHTML = "Impossible Path"
             output.style = "color: red;"
         }
-        
-
-
     }
-
 }
 
 function updateCanvas() {
@@ -142,7 +140,8 @@ function updateCanvas() {
             
             switch (readData(x, y)) {
                 case 0:
-                    ctx.fillStyle = 'white';
+                    //ctx.fillStyle = distance[x+y*SIZE]?'grey':'white';
+                    ctx.fillStyle = 'white'
                     break;
                 case 1:
                     ctx.fillStyle = 'black';
