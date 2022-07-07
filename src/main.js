@@ -102,7 +102,7 @@ function calculate() {
             let currentLowest = lowest
             for (let dx = -1; dx < 2; dx++){
                 for (let dy = -1; dy < 2; dy++) {
-                    if (dx === 0 && dy === 0) continue;
+                    if (dx !== 0 && dy !== 0) continue;
                     const cx = lowest.x+dx;
                     const cy = lowest.y+dy;
                     if (cx >= 0 &&  cx < SIZE && cy >= 0 && cy < SIZE){
