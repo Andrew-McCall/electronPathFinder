@@ -1,12 +1,11 @@
 const playButton = document.getElementById("play");
 const editor = document.getElementById("editor").children
-const clear = document.getElementById("clear");
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-const SIZE = 10;
-const SCALE = 50;
+const SIZE = 50;
+const SCALE = 10;
 
 canvas.height = SIZE * SCALE
 canvas.width = SIZE * SCALE
@@ -145,13 +144,9 @@ playButton.onclick = (e) => {
     calculate();
 }
 
-clear.onclick = (e) => {
-    data = new Array(SIZE * SIZE).fill(0);
-}
-
-let pen = 0;
+let pen = 1;
 let isMouseDown = false;
-editor[0].disabled = true;
+editor[1].disabled = true;
 
 for (let i = 0; i < editor.length; i++) {
     editor[i].onclick = (e) => {
