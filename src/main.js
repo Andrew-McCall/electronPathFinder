@@ -1,6 +1,8 @@
 const playButton = document.getElementById("play");
 const editor = document.getElementById("editor").children
 
+const output = document.getElementById("log");
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -21,6 +23,7 @@ function writeData(x, y, value) {
 
 let distance = new Array(SIZE * SIZE).fill(null);
 function calculate() {
+    
     function surrounding(current) {
         current.complete = true;
         for (let dx = -1; dx < 2; dx++){
@@ -40,6 +43,10 @@ function calculate() {
             }
         } 
     }
+
+    output.innerHTML = "A* Path Finding Algorithm"
+    output.style = "color: black;"  
+
     distance = new Array(SIZE * SIZE).fill(null);
 
     let start = null;
@@ -63,7 +70,8 @@ function calculate() {
     }
 
     if (!start || !goal) {
-        console.log("TODO: Error for no start/goal")
+        output.innerHTML = "No Start or Finish"
+        output.style = "color: red;"
     } else {
         distance[start.x + start.y * SIZE] = {to:99999,from:0,path:{x:start.x, y:start.y}, x:start.x, y:start.y}
         start = distance[start.x + start.y * SIZE]
@@ -96,26 +104,32 @@ function calculate() {
         }
         
         lowest = distance[goal.x + goal.y * SIZE]
-        while (lowest.from !== 0){
-            ctx.fillStyle = 'pink';
-            ctx.fillRect(lowest.x * SCALE, lowest.y * SCALE, SCALE, SCALE);
-            let currentLowest = lowest
-            for (let dx = -1; dx < 2; dx++){
-                for (let dy = -1; dy < 2; dy++) {
-                    if (dx !== 0 && dy !== 0) continue;
-                    const cx = lowest.x+dx;
-                    const cy = lowest.y+dy;
-                    if (cx >= 0 &&  cx < SIZE && cy >= 0 && cy < SIZE){
-                        const current = distance[cx + cy * SIZE]
-                        if (current && current.from < currentLowest.from){
-                            currentLowest = current;
+        if (lowest){
+            while (lowest.from !== 0){
+                ctx.fillStyle = 'pink';
+                ctx.fillRect(lowest.x * SCALE, lowest.y * SCALE, SCALE, SCALE);
+                let currentLowest = lowest
+                for (let dx = -1; dx < 2; dx++){
+                    for (let dy = -1; dy < 2; dy++) {
+                        if (dx !== 0 && dy !== 0) continue;
+                        const cx = lowest.x+dx;
+                        const cy = lowest.y+dy;
+                        if (cx >= 0 &&  cx < SIZE && cy >= 0 && cy < SIZE){
+                            const current = distance[cx + cy * SIZE]
+                            if (current && current.from < currentLowest.from){
+                                currentLowest = current;
+                            }
                         }
+                        
                     }
-                    
                 }
+                lowest = currentLowest
             }
-            lowest = currentLowest
+        }else{
+            output.innerHTML = "Impossible Path"
+            output.style = "color: red;"
         }
+        
 
 
     }
