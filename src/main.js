@@ -75,12 +75,12 @@ function calculate() {
             }
             lowest = [start];
 
-            let lowestDistance = lowest[0].to + lowest[0].to + lowest[0].from
+            let lowestDistance = lowest[0].to + lowest[0].from
             for (let x = 0; x < SIZE; x++) {
                 for (let y = 0; y < SIZE; y++) {
                     const current = distance[x + y * SIZE]
                     if (current && !current.complete){
-                        const currentDistance = current.to + current.to + current.from
+                        const currentDistance = current.to + current.from
                         if (lowestDistance > currentDistance){
                             lowestDistance = currentDistance
                             lowest = [current];
