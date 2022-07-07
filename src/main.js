@@ -19,11 +19,13 @@ function writeData(x, y, value) {
     data[(x % SIZE) + (y % SIZE) * SIZE] = value;
 }
 
+let distance = new Array(SIZE * SIZE).fill(null);
 function calculate() {
     function surrounding(current) {
         current.complete = true;
         for (let dx = -1; dx < 2; dx++){
             for (let dy = -1; dy < 2; dy++) {
+                if (dx !== 0 && dy !== 0 )continue;
                 const cx = current.x+dx;
                 const cy = current.y+dy;
                 if (readData(cx, cy) !== 1 && cx >= 0 &&  cx < SIZE && cy >= 0 && cy < SIZE){
@@ -38,7 +40,7 @@ function calculate() {
             }
         } 
     }
-    let distance = new Array(SIZE * SIZE).fill(null);
+    distance = new Array(SIZE * SIZE).fill(null);
 
     let start = null;
     let goal = null;
@@ -63,31 +65,37 @@ function calculate() {
     if (!start || !goal) {
         console.log("TODO: Error for no start/goal")
     } else {
-        distance[start.x + start.y * SIZE] = {to:999,from:0,path:{x:start.x, y:start.y}, x:start.x, y:start.y}
+        distance[start.x + start.y * SIZE] = {to:99999,from:0,path:{x:start.x, y:start.y}, x:start.x, y:start.y}
         start = distance[start.x + start.y * SIZE]
 
-        let lowest = start;
-        while (lowest.to !== 0){
-            surrounding(lowest, distance)
-            lowest = start
-            let lowestDistance = lowest.to + lowest.to + lowest.from
+        let lowest = [start];
+        while (lowest[0].to !== 0){
+            for (let i = 0; i < lowest.length; i++) {
+                surrounding(lowest[i], distance)
+            }
+            lowest = [start];
+
+            let lowestDistance = lowest[0].to + lowest[0].to + lowest[0].from
             for (let x = 0; x < SIZE; x++) {
                 for (let y = 0; y < SIZE; y++) {
                     const current = distance[x + y * SIZE]
                     if (current && !current.complete){
                         const currentDistance = current.to + current.to + current.from
                         if (lowestDistance > currentDistance){
-                            lowestDistance = lowest.to + lowest.to + lowest.from;
-                            lowest = current;
+                            lowestDistance = currentDistance
+                            lowest = [current];
+                        }else if (lowestDistance = currentDistance){
+                            lowest.push(current)
                         }
                     }
                 }
             }
-            if (lowest === start){
+            if (lowest[0] === start){
                 break;
             }
         }
-
+        
+        lowest = distance[goal.x + goal.y * SIZE]
         while (lowest.from !== 0){
             ctx.fillStyle = 'pink';
             ctx.fillRect(lowest.x * SCALE, lowest.y * SCALE, SCALE, SCALE);
@@ -117,6 +125,7 @@ function calculate() {
 function updateCanvas() {
     for (let x = 0; x < SIZE; x++) {
         for (let y = 0; y < SIZE; y++) {
+            
             switch (readData(x, y)) {
                 case 0:
                     ctx.fillStyle = 'white';
