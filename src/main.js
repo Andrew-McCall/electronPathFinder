@@ -1,7 +1,10 @@
 const playButton = document.getElementById("play");
 const editor = document.getElementById("editor").children
 
+const anim = document.getElementById("anim");
 const output = document.getElementById("log");
+
+
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -23,7 +26,6 @@ function writeData(x, y, value) {
 
 let distance = new Array(SIZE * SIZE).fill(null);
 async function  calculate() {
-    
     function surrounding(current) {
         current.complete = true;
         for (let dx = -1; dx < 2; dx++){
@@ -79,9 +81,9 @@ async function  calculate() {
         while (lowest[0].to !== 0){
             for (let i = 0; i < lowest.length; i++) {
                 surrounding(lowest[i])
-                ctx.fillRect(lowest[i].x * SCALE, lowest[i].y * SCALE, SCALE, SCALE);
+                if (anim.checked) ctx.fillRect(lowest[i].x * SCALE, lowest[i].y * SCALE, SCALE, SCALE);
             }
-            await new Promise(resolve => setTimeout(resolve, 250));
+            if (anim.checked) await new Promise(resolve => setTimeout(resolve, 250));
             lowest = [start];
 
             let lowestDistance = 999999
@@ -135,12 +137,12 @@ async function  calculate() {
 }
 
 function updateCanvas() {
+    console.log()
     for (let x = 0; x < SIZE; x++) {
         for (let y = 0; y < SIZE; y++) {
             
             switch (readData(x, y)) {
                 case 0:
-                    //ctx.fillStyle = distance[x+y*SIZE]?'grey':'white';
                     ctx.fillStyle = 'white'
                     break;
                 case 1:

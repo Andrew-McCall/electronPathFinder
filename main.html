@@ -12,6 +12,16 @@
             margin:0%;
             margin-left: 2%;
         }
+        label {
+        display: inline-block;
+        padding-right: -10px;
+        margin-left: 1%;
+        white-space: nowrap;
+        vertical-align: middle;
+        }
+        input {
+        vertical-align: middle;
+        }
     </style>
 
     <script defer src="src/main.js"></script>
@@ -19,7 +29,14 @@
 </head>
 <body unselectable="on">
     <div id="topbar" style="margin-left: auto; text-align: center">
-        <h3 id="log">A* Path Finding Algorithm</h3> <button id="play">Play</button>
+
+        <h3 id="log">A* Path Finding Algorithm</h3> 
+
+        <button id="play">Play</button>
+
+        <label for="anim">Animation:</label>
+        <input type="checkbox" id="anim">
+    
     </div>
 
     <div>
