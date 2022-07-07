@@ -76,7 +76,9 @@ async function  calculate() {
     } else {
         distance[start.x + start.y * SIZE] = {to:99999,from:0,path:{x:start.x, y:start.y}, x:start.x, y:start.y}
         start = distance[start.x + start.y * SIZE]
+
         ctx.fillStyle="grey"
+
         let lowest = [start];
         while (lowest[0].to !== 0){
             for (let i = 0; i < lowest.length; i++) {
@@ -115,7 +117,7 @@ async function  calculate() {
                 let currentLowest = lowest
                 for (let dx = -1; dx < 2; dx++){
                     for (let dy = -1; dy < 2; dy++) {
-                        if (dx !== 0 && dy !== 0) continue;
+                        //if (dx !== 0 && dy !== 0) continue;
                         const cx = lowest.x+dx;
                         const cy = lowest.y+dy;
                         if (cx >= 0 &&  cx < SIZE && cy >= 0 && cy < SIZE){
