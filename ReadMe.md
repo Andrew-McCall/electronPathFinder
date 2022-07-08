@@ -31,7 +31,7 @@ Example Of Full Desktop App Complete
 
 ## Download Package
 
-[Package Download]([https://](https://github.com/Andrew-McCall/electronPathFinder/raw/main/AStar.zip)) 
+[Package Download](https://github.com/Andrew-McCall/electronPathFinder/raw/main/AStar.zip)
 Unzip and run AStar.exe in the folder. Uses electron.
 
 *Don't trust random .exe from the web*
