@@ -1,13 +1,12 @@
 # Electron Path Finder
 
 ## Description
-My second electron project. Using my base from my first project ([Game Of Life]([https://](https://github.com/Andrew-McCall/electronConwaysGameOfLife))) I made a new editor and wrote an A* path finding algorithm.
+My second electron project. Using my base from my first project ([Game Of Life]([https://](https://github.com/Andrew-McCall/electronConwaysGameOfLife))), I made a new editor and wrote an A* path finding algorithm.
 
 A* is a searching algorithm that tries to calculate the shortest distance between two points. It uses the current point's distance from the goal to focus it's checks.
 
-In my app:  
-      The light pink pixels are the shortest, 
-The grey pixels have been completed as their neighbors have been checked (Animation only),
+The light pink pixels are the shortest, 
+The grey pixels have been completed as their Neighbours have been checked (Animation only),
 The black pixels are impassible "walls",
 The Green is the start,
 The Red is the goal.
@@ -22,9 +21,11 @@ The Red is the goal.
 ## Images
 
 Example Of Editor and Animation
+
 ![Gif Of using the app](https://i.imgur.com/jZKwisf.gif)
 
 Example Of Full Desktop App Complete
+
 ![Icon](https://i.imgur.com/9gh3OVd.png)
 
 
