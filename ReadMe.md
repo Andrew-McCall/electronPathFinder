@@ -5,15 +5,11 @@ My second electron project. Using my base from my first project ([Game Of Life](
 
 A* is a searching algorithm that tries to calculate the shortest distance between two points. It uses the current point's distance from the goal to focus it's checks.
 
-The light pink pixels are the shortest, 
-
-The grey pixels have been completed as their Neighbours have been checked (Animation only),
-
-The black pixels are impassible "walls",
-
-The Green is the start,
-
-The Red is the goal.
+The light pink pixels are the shortest,  
+The grey pixels have been completed as their Neighbours have been checked (Animation only),  
+The black pixels are impassible "walls",  
+The Green is the start,  
+The Red is the goal  
 
 
 ## Technologies
@@ -27,8 +23,7 @@ The Red is the goal.
 
 Example Of Editor and Animation
 
-![Gif Of using the app](https://i.imgur.com/jZKwisf.gif)
-
+![Gif Of using the app](https://i.imgur.com/jZKwisf.gif)  
 Example Of Full Desktop App Complete
 
 ![Icon](https://i.imgur.com/9gh3OVd.png)
