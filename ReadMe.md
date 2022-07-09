@@ -40,7 +40,7 @@ Unzip and run AStar.exe in the folder. Uses electron.
 ## Future Improvements
 - ~~Resize Width~~
 - ~~Default Drawing~~
-- Recursive Path Backtrack
+- ~~Recursive Path Backtrack~~
 - Variable Animation Speed
 - (Grey Searched Pixels Without Animation)
 - Save Drawing

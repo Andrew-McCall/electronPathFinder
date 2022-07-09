@@ -101,7 +101,6 @@ async function  calculate() {
                     }
                 }
             }
-            
             if (lowest[0] === start){
                 break;
             }
@@ -109,26 +108,29 @@ async function  calculate() {
         
         lowest = distance[goal.x + goal.y * SIZE]
         if (lowest){
-            while (lowest.from !== 0){
+            function backtrack(current){
                 ctx.fillStyle = 'pink';
-                ctx.fillRect(lowest.x * SCALE, lowest.y * SCALE, SCALE, SCALE);
-                let currentLowest = lowest
-                for (let dx = -1; dx < 2; dx++){
-                    for (let dy = -1; dy < 2; dy++) {
-                        //if (dx !== 0 && dy !== 0) continue;
-                        const cx = lowest.x+dx;
-                        const cy = lowest.y+dy;
-                        if (cx >= 0 &&  cx < SIZE && cy >= 0 && cy < SIZE){
-                            const current = distance[cx + cy * SIZE]
-                            if (current && current.from < currentLowest.from){
-                                currentLowest = current;
+                ctx.fillRect(current.x * SCALE, current.y * SCALE, SCALE, SCALE);
+                if (current.from !== 0){
+                    var currentLowest = current
+                    for (let dx = -1; dx < 2; dx++){
+                        for (let dy = -1; dy < 2; dy++) {
+                            //if (dx !== 0 && dy !== 0) continue;
+                            const cx = current.x+dx;
+                            const cy = current.y+dy;
+                            if (cx >= 0 &&  cx < SIZE && cy >= 0 && cy < SIZE){
+                                const current = distance[cx + cy * SIZE]
+                                if (current && current.from < currentLowest.from){
+                                    currentLowest = current;
+                                }
                             }
+                            
                         }
-                        
                     }
+                    backtrack(currentLowest)
                 }
-                lowest = currentLowest
             }
+            backtrack(lowest)
         }else{
             output.innerHTML = "Impossible Path"
             output.style = "color: red;"
