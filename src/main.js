@@ -4,8 +4,6 @@ const editor = document.getElementById("editor").children
 const anim = document.getElementById("anim");
 const output = document.getElementById("log");
 
-
-
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -224,3 +222,22 @@ function deleteType(value) {
     }
 }
 
+function defaultCanvas(){
+    const middle = Math.floor(SIZE/2)
+
+    for (let i = -8; i < 8; i++) {
+        writeData(middle, middle+i - 5, 1);
+        writeData(middle + 7, middle+i, 1);
+        writeData(middle - 7, middle+i, 1);
+    }
+
+    for (let i = -16; i < 16; i++) {
+        writeData(middle+i, middle+ 8, 1);     
+    }
+
+    writeData(middle + 8, middle, 2);   
+    writeData(middle - 8, middle, 3);   
+
+    updateCanvas();
+}
+defaultCanvas();
