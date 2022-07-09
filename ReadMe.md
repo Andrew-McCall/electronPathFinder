@@ -20,14 +20,14 @@ The Red is the goal
 
   
 ## Images
+##### New Default Page Searched (After Page Resize Also)  
+![New Default ](https://i.imgur.com/bqUX60o.png)  
 
-Example Of Editor and Animation
-
+##### Example Of Editor and Animation  
 ![Gif Of using the app](https://i.imgur.com/jZKwisf.gif)  
-Example Of Full Desktop App Complete
 
-![Icon](https://i.imgur.com/9gh3OVd.png)
-
+##### Example Of A Maze Searched  
+![Maze Search](https://i.imgur.com/9gh3OVd.png)  
 
 ## Download Package
 
