@@ -33,7 +33,7 @@ The Red is the goal
 
 [Package Download](https://github.com/Andrew-McCall/electronPathFinder/raw/main/AStar.zip)
 
-Unzip and run AStar.exe in the folder. Uses electron.
+Unzip and run AStar.exe in the folder. Uses electron and is built for Windows x64.
 
 *Don't trust random .exe from the web*
 
