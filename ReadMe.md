@@ -20,10 +20,13 @@ The Red is the goal
 
   
 ## Images
-##### New Default Page Searched (After Page Resize Also)  
-![New Default ](https://i.imgur.com/bqUX60o.png)  
+##### New Animation Slider Demo  
+![Variable Animation Speed](https://i.imgur.com/5Io13Xc.gif)  
 
-##### Example Of Editor and Animation  
+##### New Default Page Searched (After Page Resize)  
+![New Default](https://i.imgur.com/bqUX60o.png)  
+
+##### Editor and Animation Demo  
 ![Gif Of using the app](https://i.imgur.com/jZKwisf.gif)  
 
 ##### Example Of A Maze Searched  
