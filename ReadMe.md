@@ -13,7 +13,7 @@ The Red is the goal
 
 
 ## Technologies
-- Electron
+- Electron / npx Electron-Packager
 - JavaScript
 - Canvas (JS)
 - HTML/CSS
