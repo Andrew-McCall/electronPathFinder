@@ -2,6 +2,7 @@ const playButton = document.getElementById("play");
 const editor = document.getElementById("editor").children
 
 const anim = document.getElementById("anim");
+const animSlider = document.getElementById("animSpeed");
 const output = document.getElementById("log");
 
 const canvas = document.getElementById('canvas');
@@ -83,7 +84,7 @@ async function  calculate() {
                 surrounding(lowest[i])
                 if (anim.checked) ctx.fillRect(lowest[i].x * SCALE, lowest[i].y * SCALE, SCALE, SCALE);
             }
-            if (anim.checked) await new Promise(resolve => setTimeout(resolve, 250));
+            if (anim.checked) await new Promise(resolve => setTimeout(resolve, animSlider.value));
             lowest = [start];
 
             let lowestDistance = 999999

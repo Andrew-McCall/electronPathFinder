@@ -4,7 +4,7 @@ app.whenReady().then( () => {
 
     const mainWindow = new BrowserWindow({
         width:516,
-        height:626,
+        height:648,
         resizable:false,
         autoHideMenuBar: true,
         webPreferences:{

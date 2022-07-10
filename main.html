@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A* Pathfinder</title>
     <style>
+        
         canvas{
             background-color: plum;
             margin-left: 1%;
@@ -13,6 +14,7 @@
         
         body{
             margin: auto;
+            overflow:hidden;
         }
 
         #log{
@@ -42,11 +44,19 @@
         <h3 id="log">A* Path Finding Algorithm</h3> 
 
         <button id="play">Play</button>
+    
+    </div>
+
+    <div id="topbar" style="margin-left: auto; text-align: center">
 
         <label for="anim">Animation:</label>
         <input type="checkbox" id="anim">
+        <label hidden="true" for="animSpeed">Speed:</label>
+        <input type="range" id="animSpeed" min="0" max="500" value="100" step="25">
     
     </div>
+    
+
 
     <div>
         <canvas id="canvas" height="500px" width="500px"></canvas>
